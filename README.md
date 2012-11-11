@@ -1,3 +1,5 @@
+Maintainer: Dolf Schimmel - Freeaqingme (dolfschimmel@gmail.com)
+
 EnriseRestfulApi
 ================
 
