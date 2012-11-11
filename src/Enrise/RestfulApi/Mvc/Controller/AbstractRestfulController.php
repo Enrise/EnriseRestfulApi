@@ -38,12 +38,6 @@ abstract class AbstractRestfulController extends AbstractActionController
      */
     protected static $collectionId;
 
-    /**
-     * Used to glob the controller directory structure.
-     *
-     * Unfortunately the Service Locator does not have a wildcard search. Yet.
-     */
-    abstract protected function getDir();
 
     /**
      * When a subclass its target is called upon this method is called.
