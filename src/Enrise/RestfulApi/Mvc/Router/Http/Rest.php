@@ -173,7 +173,7 @@ class Rest extends Part
         $controller->passThrough($routeMatch);
 
         $nextUrlPart = $routeMatch->getUrlParts()->offsetGet(0);
-        $controllers = $controllerLoader->getServiceLocator()->getCanonicalNames();
+        $controllers = $controllerLoader->getCanonicalNames();
         $subControllers = SubstringSearcher::searchArray($controllers, $controllerName);
         foreach($subControllers as $controller) {
             if ($controller::isUrlPartMatch($nextUrlPart)) {
