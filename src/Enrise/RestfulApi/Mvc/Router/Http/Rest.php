@@ -181,7 +181,9 @@ class Rest extends Part
             }
         }
 
-        throw new \Exception('No match was found for this url? This couldn\'t happen.');
+        throw new \Exception(
+            'No match was found for this url. Check your invokables/controller configuration.'
+        );
     }
 
     /**
@@ -202,9 +204,13 @@ class Rest extends Part
     */
     public function assemble(array $params = array(), array $options = array())
     {
-        throw new \Exception(
-                'The Assemble() method is not implemented in the REST router'
-        );
+        if ($params) {
+            throw new \Exception(
+                'Assembling a rest route with parameters has not yet been implemented.'
+            );
+        }
+
+        return parent::assemble(array(), $options);
     }
 
     public function getAssembledParams()
