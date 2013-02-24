@@ -16,6 +16,7 @@ use Enrise\RestfulApi\Mvc\Router\Http\RestRouteListener;
 
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
         $e->getApplication()->getServiceManager()->get('translator');

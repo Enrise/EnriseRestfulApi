@@ -1,0 +1,13 @@
+{
+    "packages": {
+        "enrise/restful-api": {
+            "dev-develop": {
+                "name": "enrise/restful-api",
+                "version": "dev-develop",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/Enrise/RestfulApi.git"
+                }
+            }
+        }
+}

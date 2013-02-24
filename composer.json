@@ -1,0 +1,11 @@
+{
+    "name": "enrise/restful-api",
+    "license": "3-clause BSD",
+    "require": {
+        "php"         : ">=5.4",
+        "zendframework/zendframework": ">=2.1"
+    },
+    "autoload": {
+        "psr-0": { "Enrise\\RestfulApi\\": "src/" }
+    }
+}
