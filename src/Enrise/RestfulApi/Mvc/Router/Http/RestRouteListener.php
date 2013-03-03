@@ -12,6 +12,7 @@ namespace Enrise\RestfulApi\Mvc\Router\Http;
 
 use Enrise\RestfulApi\Mvc\Router\Http\Rest as RestRoute;
 use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
 
 class RestRouteListener
 {
@@ -25,6 +26,9 @@ class RestRouteListener
 
         $sm = $e->getApplication()->getServiceManager();
         $router = $e->getApplication()->getServiceManager()->get('router');
+        if (!$router instanceof HttpRouter) {
+            return;
+        }
 
         foreach($options['router']['apiRoutes'] as $key => $routeOptions) {
             $route = RestRoute::factory($routeOptions, $sm);

@@ -83,7 +83,7 @@ class Rest extends Part
     public static function factory($customOptions = array(), ServiceManager $sm = null)
     {
         if (!$sm) {
-            throw new \Exception('An instance of the service manager is required but none was supplied');
+            throw new Exception\InvalidArgumentException('An instance of the service manager is required but none was supplied');
         }
         $options = self::$defaultRoutes;
         $options['route']['options']['route'] = $customOptions['route'];
@@ -137,7 +137,7 @@ class Rest extends Part
     public function match(Request $request, $pathOffset = null)
     {
         if ($pathOffset) {
-            throw new \Exception('
+            throw new Exception\InvalidArgumentException('
                 Since $pathOffset has not been documented, this parameter wasn\'t implemented'
             );
         }
@@ -154,6 +154,9 @@ class Rest extends Part
 
         $restRouteMatch->setMatchedRouteName(__CLASS__);
         $controller = $this->passThrough($restRouteMatch->getParam('controller'), $restRouteMatch);
+        if (!$controller) {
+            return;
+        }
 
         $restRouteMatch->setParam('controller', $controller);
 
@@ -181,9 +184,10 @@ class Rest extends Part
             }
         }
 
-        throw new \Exception(
-            'No match was found for this url. Check your invokables/controller configuration.'
-        );
+        return null;
+//        throw new Exception\RuntimeException(
+//            'No match was found for this url. Check your invokables/controller configuration.'
+//        );
     }
 
     /**
@@ -205,7 +209,7 @@ class Rest extends Part
     public function assemble(array $params = array(), array $options = array())
     {
         if ($params) {
-            throw new \Exception(
+            throw new Exception\InvalidArgumentException(
                 'Assembling a rest route with parameters has not yet been implemented.'
             );
         }
@@ -215,7 +219,7 @@ class Rest extends Part
 
     public function getAssembledParams()
     {
-        throw new \exception('Not Implemented');
+        throw new Exception\InvalidArgumentException('Not Implemented');
     }
 
 
